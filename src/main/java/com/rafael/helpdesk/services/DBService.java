@@ -36,13 +36,12 @@ public class DBService {
 		Tecnico tec1 = new Tecnico(null, "Rafael Cunha", "05196131477", "rafaelcn1@mail.com", passwordEncoder.encode("123"));
 		tec1.addPerfis(Perfil.ADMIN); // Adicionando o perfil admin ao tec1
 
-//		Cliente cli1 = new Cliente(null, "José Lobo", "64305931850", "jose@gmail.com", "123");
-//
-//		Chamado c1 = new Chamado(null, Prioridade.MEDIA, Status.ABERTO, "Chamado 01", "Primeiro Chamado", tec1, cli1);
+		Cliente cli1 = new Cliente(null, "José Lobo", "64305931850", "jose@gmail.com", passwordEncoder.encode("123"));
+		Chamado c1 = new Chamado(null, Prioridade.MEDIA, Status.ABERTO, "Chamado 01", "Primeiro Chamado", tec1, cli1);
 
 		tecnicoRepository.saveAll(Arrays.asList(tec1));
-//		clienteRepository.saveAll(Arrays.asList(cli1));
-//		chamadoRepository.saveAll(Arrays.asList(c1));
+		clienteRepository.saveAll(Arrays.asList(cli1));
+		chamadoRepository.saveAll(Arrays.asList(c1));
 	}
 
 }

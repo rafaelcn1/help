@@ -3,6 +3,7 @@ package com.rafael.helpdesk.config;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -30,6 +32,8 @@ import com.rafael.helpdesk.services.CustomAuthenticationManager;
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
+	
+	private static final String[] PUBLIC_MATCHERS = { "/h2/**" };
 
 	@Autowired
 	private Environment env;
@@ -57,12 +61,15 @@ public class SecurityConfig {
 
 		// Add JWT authentication filter
 		http.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
-		
-		http.addFilter(new JWTAuthorizationFilter(authenticationManager(), jwtUtil, userDetailsService));
 
+		http.addFilter(new JWTAuthorizationFilter(authenticationManager(), jwtUtil, userDetailsService));
+		http.authorizeRequests().anyRequest().permitAll();
+		//http.authorizeHttpRequests().requestMatchers(PUBLIC_MATCHERS).permitAll().anyRequest().authenticated();
+
+		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		// Configure access rules for different roles
-		http.authorizeHttpRequests().requestMatchers("/**").hasRole("ADMIN").and().authorizeHttpRequests()
-				.requestMatchers("/chamados/**").hasRole("USER").and().formLogin();
+//		http.authorizeHttpRequests().requestMatchers("/**").hasRole("ADMIN").and().authorizeHttpRequests()
+//				.requestMatchers("/chamados/**").hasRole("USER").and().formLogin();
 		return http.build();
 	}
 
