@@ -21,7 +21,7 @@ import com.rafael.helpdesk.domain.model.Cliente;
 import com.rafael.helpdesk.dtos.ClienteDTO;
 import com.rafael.helpdesk.services.ClienteService;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 
 @RestController // permite que métodos retornem diretamente objetos convertidos em JSON/XML
 @RequestMapping(value = "/clientes") // Mapeamento de uma URL para um método específico em uma classe de controle

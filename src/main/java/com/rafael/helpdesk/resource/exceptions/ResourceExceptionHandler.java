@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.rafael.helpdesk.services.execptions.DataIntegrityViolationException;
 import com.rafael.helpdesk.services.execptions.ObjectNotFoundException;
 
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {
@@ -70,7 +70,7 @@ public class ResourceExceptionHandler {
 
 		ValidationError erros = new ValidationError(timestamp, valorHttpStatus, error, menssagem, path);
 
-		List<FieldError> listaDeErros = ex.getFieldErrors(); //Lista de erros do MethodArgumentNotValidException
+		List<FieldError> listaDeErros = ex.getBindingResult().getFieldErrors(); //Lista de erros do MethodArgumentNotValidException
 		for (FieldError erro : listaDeErros) {
 			String field = erro.getField(); // Fiel que deu o erro
 			String message = erro.getDefaultMessage(); // A mensagem padrão do fiel que deu o erro

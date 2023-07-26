@@ -21,7 +21,7 @@ import com.rafael.helpdesk.domain.model.Tecnico;
 import com.rafael.helpdesk.dtos.TecnicoDTO;
 import com.rafael.helpdesk.services.TecnicoService;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/tecnicos") // localhost:8080/tecnicos
