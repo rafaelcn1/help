@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.rafael.helpdesk.domain.enums.Perfil;
 import com.rafael.helpdesk.domain.model.Tecnico;
 
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
 
 public class TecnicoDTO implements Serializable {
 

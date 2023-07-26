@@ -15,7 +15,7 @@ import com.rafael.helpdesk.repositories.PessoaRepository;
 import com.rafael.helpdesk.services.execptions.DataIntegrityViolationException;
 import com.rafael.helpdesk.services.execptions.ObjectNotFoundException;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 
 @Service // permite a implementação de lógica de negócio e regras de processamento de
 			// dados
