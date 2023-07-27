@@ -72,6 +72,12 @@ public class TecnicoService {
 		tecnicoDTO.setId(id); // Para garantir que o id informado será o q vai ser atualizado
 		Tecnico antigoTecnico = findById(id); // Buscar o tecnico por id, caso não ache, será gerado a exerção pelo
 												// metodo findById
+		
+		//Checagem para verificar se a senha foi alterada, caso for alterada, será encondada novamente
+		//se nao for igual é pq foi alterada
+		if(!tecnicoDTO.getSenha().equals(antigoTecnico.getSenha())) {
+			tecnicoDTO.setSenha(passwordEncoder.encode(tecnicoDTO.getSenha()));
+		}
 		validarCpfEEmail(tecnicoDTO);// Validando o CPF e o Email, caso não seja valido, será gerado a exerção pelo
 										// metodo validarCpfEEmail
 
