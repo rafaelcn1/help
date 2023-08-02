@@ -33,7 +33,7 @@ public class DBService {
 
 	public void instanciaDB() {
 		// Toda vez que for iniciado o sistema, será criado esse tecnico
-		Tecnico tec1 = new Tecnico(null, "Rafael Cunha", "05196131477", "rafaelcn1@mail.com", passwordEncoder.encode("123"));
+		Tecnico tec1 = new Tecnico(null, "Rafael Cunha", "05196131477", "rafaelcn1@hotmail.com", passwordEncoder.encode("123"));
 		tec1.addPerfis(Perfil.ADMIN); // Adicionando o perfil admin ao tec1
 
 		Cliente cli1 = new Cliente(null, "José Lobo", "64305931850", "jose@gmail.com", passwordEncoder.encode("123"));
