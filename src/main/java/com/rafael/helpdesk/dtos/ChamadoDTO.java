@@ -101,9 +101,13 @@ public class ChamadoDTO implements Serializable {
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
 	}
-
+	
 	public Tecnico getTecnico() {
-		return tecnico;
+	    return tecnico;
+	}
+
+	public void setTecnico(String tecnicoId) {
+	    this.tecnico = new Tecnico(tecnicoId);
 	}
 
 	public void setTecnico(Tecnico tecnico) {
@@ -116,6 +120,10 @@ public class ChamadoDTO implements Serializable {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+	
+	public void setCliente(String clienteId) {
+	    this.cliente = new Cliente(clienteId);
 	}
 
 }

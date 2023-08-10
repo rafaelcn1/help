@@ -44,6 +44,10 @@ public class Cliente extends Pessoa implements Serializable {
 		this.perfis = clienteDTO.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
 		this.dataCriacao = clienteDTO.getDataCriacao();
 	}
+	
+	public Cliente(String id) {
+	    this.id = Integer.parseInt(id);
+	}
 
 	public List<Chamado> getChamados() {
 		return chamados;

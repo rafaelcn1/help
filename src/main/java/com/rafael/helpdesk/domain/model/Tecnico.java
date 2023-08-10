@@ -42,6 +42,10 @@ public class Tecnico extends Pessoa implements Serializable {
 	public Tecnico(Integer id, String nome, String cpf, String email, String senha) {
 		super(id, nome, cpf, email, senha);
 	}
+	
+	public Tecnico(String id) {
+	    this.id = Integer.parseInt(id);
+	}
 
 	public List<Chamado> getChamados() {
 		return chamados;
