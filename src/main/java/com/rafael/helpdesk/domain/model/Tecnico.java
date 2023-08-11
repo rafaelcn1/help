@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.rafael.helpdesk.domain.enums.Perfil;
 import com.rafael.helpdesk.dtos.TecnicoDTO;
 
 @Entity
@@ -54,5 +55,10 @@ public class Tecnico extends Pessoa implements Serializable {
 	public void setChamados(List<Chamado> chamados) {
 		this.chamados = chamados;
 	}
+	
+	public void setPerfis(List<Perfil> perfis) {
+	    this.perfis = perfis.stream().map(Perfil::getCodigo).collect(Collectors.toSet());
+	}
+
 
 }
